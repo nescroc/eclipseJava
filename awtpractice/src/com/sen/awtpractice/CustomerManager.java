@@ -32,7 +32,8 @@ import java.awt.event.WindowEvent;
 
 
 
-public class CustomerManager extends Frame implements ActionListener, KeyListener, ItemListener{
+public class CustomerManager extends Frame 
+		implements ActionListener, KeyListener, ItemListener{
    
    /* ------------------------- 화면관련 컴포넌트 ----------------------------------*/
    private static final long serialVersionUID = 1L;
@@ -417,7 +418,9 @@ public class CustomerManager extends Frame implements ActionListener, KeyListene
    public static void main(String[] args) {
       new CustomerManager();
    }
-
+   
+   	
+   
 
 
 }
