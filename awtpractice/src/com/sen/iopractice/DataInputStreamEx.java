@@ -7,8 +7,7 @@ public class DataInputStreamEx {
 		FileInputStream fis = null;
 		DataInputStream dis = null;
 		try {
-			fis = new FileInputStream("C:\\Users\\nes05\\OneDrive"
-					+"\\바탕 화면\\수업\\Hello.txt");
+			fis = new FileInputStream("C:\\mySen\\test\\Hello.txt");
 			dis = new DataInputStream(fis);
 			//DataInputStream은 기본자료형을 유지한채로 저장된
 			//값을 읽어들일 수 있는 read메서드가 존재한다.
