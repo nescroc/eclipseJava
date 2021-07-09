@@ -7,6 +7,7 @@ import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Dimension;
+import java.awt.FileDialog;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
@@ -28,6 +29,18 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 
 import com.cms.vo.Customer;
 
@@ -76,9 +89,11 @@ public class CustomerManager extends Frame implements ActionListener, KeyListene
    private Dialog dialog = new Dialog(this, "버전정보", true);
    private Label dlabel = new Label("Customer Manager V1.0", Label.CENTER);
    private Button dbutton = new Button("Check");
-      
+   
+   private FileDialog fd = null;
    /* ------------------------- 기타관련 컴포넌트 ----------------------------------*/
    private java.util.List<Customer> data = new java.util.ArrayList<Customer>();
+   private File myfile = null;
    
    public CustomerManager(){
       super("CustomerManager");
@@ -89,6 +104,15 @@ public class CustomerManager extends Frame implements ActionListener, KeyListene
    }
 
    private void setEvent() {//이벤트 연결
+      mfsaveas.addActionListener(this);
+      mfsave.addActionListener(this);
+      mfopen.addActionListener(this);
+      mfnew.addActionListener(this);
+      initbt.addActionListener(this);
+      delbt.addActionListener(this);
+      updatebt.addActionListener(this);
+      dispbt.addActionListener(this);
+      listli.addItemListener(this);
       addbt.addActionListener(this);
       tel1tf.addActionListener(this);
       telch.addItemListener(this);
@@ -135,26 +159,272 @@ public class CustomerManager extends Frame implements ActionListener, KeyListene
                myhobby.append("-");
             }
          }
+         String mhobby = "";
+         if(myhobby.length() == 0) {
+            mhobby = "없음";
+         }else {
+            mhobby = myhobby.substring(0, myhobby.length()-1);
+         }
+         
+         Customer myCustomer = new Customer(name, jumin, tel, gender, mhobby);
+         
+         data.add(myCustomer);
+         listli.add(myCustomer.toString());
+         infota.setText("\n\t성공적으로 데이터가 등록되었습니다.");
+         try {
+            Thread.sleep(500);
+         }catch(InterruptedException ie) { }
+         clrscr();
+      }//end 등록
+      if(e.getSource() == dispbt) {// 분석 버튼
+         String jumin = jumin1tf.getText().trim() + jumin2tf.getText().trim();
+         int[] ju = new int[jumin.length()];
+         for(int i=0; i<jumin.length(); i++) {
+            ju[i] = jumin.charAt(i) - 48;
+         }
+         // 나머지는 주민번호 계산 공식에 따라...분석
+      }//end 분석
+      if(e.getSource() == updatebt) {// 수정 버튼
+         int index = listli.getSelectedIndex();
+         Customer myCustomer = data.get(index);
+         
+         String tel = telch.getSelectedItem() + "-" + tel1tf.getText().trim() + "-" + tel2tf.getText().trim();
+         StringBuffer myhobby = new StringBuffer();
+         for(int i=0; i<hobby.length; i++) {
+            if(hobby[i].getState()) {
+               myhobby.append(hobby[i].getLabel());
+               myhobby.append("-");
+            }
+         }
          if(myhobby.length() == 0) {
             myhobby.append("없음");
          }else {
             myhobby.substring(0, myhobby.length()-1);
          }
          
-         Customer myCustomer = new Customer(name, jumin, tel, gender, myhobby.toString());
+         myCustomer.setTel(tel);
+         myCustomer.setHobby(myhobby.toString());
          
-         data.add(myCustomer);
-         listli.add(myCustomer.toString());
-         infota.setText("\n\t성공적으로 데이터가 등록되었습니다.");
+         infota.setText("\n\t성공적으로 정보가 수정되었습니다.");
+         try {
+            Thread.sleep(500);
+         }catch(InterruptedException ie) { }
+         setForm(true);
+         setButton(true);
+         clrscr();
+      }//end 수정
+      if(e.getSource() == delbt) {// 삭제 버튼
+         int index = listli.getSelectedIndex();
+         Customer myCustomer = data.get(index);
          
-      }//end 등록
+         listli.remove(index);
+         data.remove(index);
+         infota.setText("\n\t" + myCustomer.getName() + "님의 정보를 성공적으로 삭제하였습니다.");
+         try {
+            Thread.sleep(500);
+         }catch(InterruptedException ie) { }
+         setForm(true);
+         setButton(true);
+         clrscr();
+      }//end 삭제
+      if(e.getSource() == initbt) {// 입력모드
+         setForm(true);
+         setButton(true);
+         clrscr();
+      }//end 입력모드
+      if(e.getSource() == mfnew) {//새파일
+         myfile = null;
+         data.clear();
+         listli.removeAll();
+         setForm(true);
+         setButton(true);
+         clrscr();
+         return;
+      }
+      if(e.getSource() == mfopen) {//불러오기
+         fd = new FileDialog(this, "불러오기", FileDialog.LOAD);
+         fd.setVisible(true);
+         String fileName = fd.getFile();
+         String folder = fd.getDirectory();
+         if(fileName == null || folder == null) return;
+         myfile = new File(folder, fileName);
+         //openFile();//실제 열기
+         loadData();
+      }
+      if(e.getSource() == mfsave) {//저장하기
+         if(myfile == null) {
+            fd = new FileDialog(this, "저장하기", FileDialog.SAVE);
+            fd.setVisible(true);
+            String fileName = fd.getFile();
+            String folder = fd.getDirectory();
+            if(fileName == null || folder == null) return;
+            myfile = new File(folder, fileName);
+         }
+         //saveFile();
+         saveData();
+      }
+      if(e.getSource() == mfsaveas) {//새이름으로저장하기
+         fd = new FileDialog(this, "새이름으로저장하기", FileDialog.SAVE);
+         fd.setVisible(true);
+         String fileName = fd.getFile();
+         String folder = fd.getDirectory();
+         if(fileName == null || folder == null) return;
+         myfile = new File(folder, fileName);
+         //saveFile();//실제 저장
+         saveData();
+      }
    }
 
+   public void loadData() {// ObjectStream 이용
+      data.clear();
+      listli.removeAll();
+      FileInputStream fis = null;
+      ObjectInputStream ois = null;
+      try {
+         fis = new FileInputStream(myfile);
+         ois = new ObjectInputStream(fis);
+         while(true) {
+            Customer myCustomer = (Customer) ois.readObject();
+            listli.add(myCustomer.toString());
+            data.add(myCustomer);
+         }
+      }catch(EOFException eofe) {
+         infota.setText("\n\t파일의 끝까지 데이터를 로드하였습니다.");
+      }catch(ClassNotFoundException cnfe) {
+         cnfe.printStackTrace();
+      }catch(IOException ioe) {
+         ioe.printStackTrace();
+      }finally {
+         try { if(ois != null) ois.close(); }catch(IOException ioe) { }
+         try { if(fis != null) fis.close(); }catch(IOException ioe) { }
+      }
+   }
+   
+   public void saveData() {// ObjectStream 이용
+      FileOutputStream fos = null;
+      ObjectOutputStream oos = null;
+      try {
+         fos = new FileOutputStream(myfile);
+         oos = new ObjectOutputStream(fos);
+         for(int i=0; i<data.size(); i++) {
+            Customer myCustomer = data.get(i);
+            oos.writeObject(myCustomer);
+         }
+      }catch(IOException ioe) {
+         ioe.printStackTrace();
+      }finally {
+         try { if(oos != null) oos.close(); }catch(IOException ioe) {}
+         try { if(fos != null) fos.close(); }catch(IOException ioe) {}
+      }
+   }
+   
+   public void openFile() {
+      data.clear();
+      listli.removeAll();
+      FileReader fr = null;
+      BufferedReader br = null;
+      try {
+         fr = new FileReader(myfile);
+         br = new BufferedReader(fr);
+         String mystr = "";
+         while((mystr = br.readLine()) != null) {
+            String[] imsiData = mystr.split("/");
+            boolean myGender = false;
+            if(imsiData[3].equals("남성")) myGender = true;
+            Customer myCustomer = new Customer(imsiData[0], imsiData[1], imsiData[2], myGender, imsiData[4]);
+            data.add(myCustomer);
+            listli.add(myCustomer.toString());
+         }
+      }catch(IOException ioe) {
+         ioe.printStackTrace();
+      }finally {
+         try { if(br != null) br.close(); }catch(IOException ioe) { }
+         try { if(fr != null) fr.close(); }catch(IOException ioe) { }
+      }
+   }
+   
+   public void saveFile() { // 날로 저장하기
+      FileWriter fw = null;
+      BufferedWriter bw = null;
+      PrintWriter pw = null;
+      try {
+         fw = new FileWriter(myfile);
+         bw = new BufferedWriter(fw);
+         pw = new PrintWriter(bw, true);
+         
+         for(int i=0; i<data.size(); i++) {
+            Customer myCustomer = data.get(i);
+            StringBuffer mystr = new StringBuffer();
+            mystr.append(myCustomer.getName());   mystr.append("/");
+            mystr.append(myCustomer.getJumin());mystr.append("/");
+            mystr.append(myCustomer.getTel());   mystr.append("/");
+            mystr.append(myCustomer.isGender() ? "남성" : "여성"); mystr.append("/");
+            mystr.append(myCustomer.getHobby());
+            pw.println(mystr.toString());
+         }//end for
+      }catch(IOException ioe) {
+         ioe.printStackTrace();
+      }finally {
+         if(pw != null) pw.close();
+         try { if(bw != null) bw.close(); }catch(IOException ioe) { }
+         try { if(fw != null) fw.close(); }catch(IOException ioe) { }
+      }
+   }
+   
    @Override
    public void itemStateChanged(ItemEvent e) {
       if(e.getSource() == telch) {
          tel1tf.requestFocus(); return;
       }
+      if(e.getSource() == listli) {
+         int index = listli.getSelectedIndex();
+         Customer myCustomer = data.get(index);
+         
+         nametf.setText(myCustomer.getName());
+         jumin1tf.setText(myCustomer.getJumin().substring(0, 6));
+         jumin2tf.setText(myCustomer.getJumin().substring(6));
+         String[] phone = myCustomer.getTel().split("-");
+         telch.select(phone[0]);
+         tel1tf.setText(phone[1]);
+         tel2tf.setText(phone[2]);
+         man.setState(myCustomer.isGender());
+         woman.setState(!myCustomer.isGender());
+         for(int i=0; i<hobby.length; i++)
+            hobby[i].setState(false);
+         String[] myhobby = myCustomer.getHobby().split("-");
+         for(int i=0; i<hobby.length; i++) {
+            for(int j=0; j<myhobby.length; j++) {
+               if(hobby[i].getLabel().equals(myhobby[j])) {
+                  hobby[i].setState(true); break;
+               }
+            }
+         }
+         
+         setButton(false);
+         setForm(false);
+      }
+   }
+   
+   public void setForm(boolean state) {
+      nametf.setEnabled(state);
+      jumin1tf.setEnabled(state);
+      jumin2tf.setEnabled(state);
+      man.setEnabled(state);
+      woman.setEnabled(state);
+   }
+   
+   public void clrscr() {
+      nametf.setText("");
+      jumin1tf.setText("");
+      jumin2tf.setText("");
+      telch.select(0);
+      tel1tf.setText("");
+      tel2tf.setText("");
+      man.setState(true);
+      for(int i=0; i<hobby.length; i++)
+         hobby[i].setState(false);
+      infota.setText("");
+      nametf.requestFocus();
    }
    
    public void setButton(boolean state) {
@@ -294,6 +564,7 @@ public class CustomerManager extends Frame implements ActionListener, KeyListene
       setLocation(scr.width/2-my.width/2, scr.height/2-my.height/2);
       
       setButton(true);
+      setForm(true);
       nametf.requestFocus();
       
       setVisible(true);
