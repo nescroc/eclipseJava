@@ -1,4 +1,4 @@
-package com.sen.awtpractice.grapchics;
+package com.sen.awtpractice.graphics;
 
 import java.awt.Frame;
 import java.awt.Graphics;
