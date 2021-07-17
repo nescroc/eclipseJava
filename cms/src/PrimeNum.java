@@ -106,8 +106,8 @@ public class PrimeNum {
 	}
 
 	public static void main(String[] args) {
-		PrimeNum pn = new PrimeNum();
-		pn.programRun();
+		new PrimeNum().programRun();
+		
 
 	}
 
