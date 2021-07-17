@@ -5,11 +5,11 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class PrimeNum {
-	Random randNum;
-	HashSet<Integer> randSet;
-	int maxMin[];
-	Iterator<Integer> iterKey;
-	ArrayList<Integer> primeAr;
+	Random randNum; // 랜덤함수를 뽑아줄 멤버
+	HashSet<Integer> randSet; // 랜덤한 숫자를 중복없이 받기위한 hashSet 멤버
+	int maxMin[]; // 최소,최대를 받기위한 배열
+	Iterator<Integer> iterKey; // randSet키를 담아둘 멤버
+	ArrayList<Integer> primeAr; //소수일시 담을 ArrayList
 
 	public PrimeNum() {
 		randNum = new Random();
@@ -21,8 +21,6 @@ public class PrimeNum {
 
 	// 0~부터 1000까지 랜덤한 값을 100개 중복안되게 HashSet을 통하여 전달
 	public HashSet<Integer> randMaker() {
-		// Random randNum = new Random();
-		// HashSet<Integer> randSet = new HashSet<Integer>();
 		boolean isRun = true;
 		while (isRun) {
 			randSet.add(randNum.nextInt(1001));
@@ -41,7 +39,7 @@ public class PrimeNum {
 		for (int i = 0; i < primeAr.size(); i++) {// 최대값, 최소값 구하는 for문
 
 			for (int j = 0; j < primeAr.size(); j++) {
-				
+
 				if ((primeAr.get(i) - primeAr.get(j) < 0))
 					break;
 				if (j == primeAr.size() - 1)
@@ -78,7 +76,9 @@ public class PrimeNum {
 		System.out.println("최대 소수 : " + maxMin[0] + "\n최소 소수 : " + maxMin[1]);
 		System.out.println("------------------");
 	}
-
+	
+	
+	//프로그램 시작부분
 	public void programRun() {
 		randSet = randMaker();// Random값을 메서드에 담을 HashSet
 		iterKey = randSet.iterator();// HashSet을 정렬하여 담을 공간
@@ -107,7 +107,6 @@ public class PrimeNum {
 
 	public static void main(String[] args) {
 		new PrimeNum().programRun();
-		
 
 	}
 
