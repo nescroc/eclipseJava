@@ -5,9 +5,9 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class PrimeNum {
-	private Random randNum;
-	private HashSet<Integer> randSet;
-	private int maxMin[];
+	Random randNum;
+	HashSet<Integer> randSet;
+	int maxMin[];
 	Iterator<Integer> iterKey;
 	ArrayList<Integer> primeAr;
 

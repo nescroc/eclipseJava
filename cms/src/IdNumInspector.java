@@ -21,19 +21,25 @@ public class IdNumInspector {
 	public void start() throws IOException {
 		printText();
 		while (!isRun) {
-			System.out.print(">> 데이터 입력: ");
+			try {//비정상 입력 메시지(36번 라인)가 26번보다 늦게 호출되서 0.1초 지연걸어 보았습니다
+				Thread.sleep(100);
+				System.out.print(">> 데이터 입력: ");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
 			//입력받은 스트링에 공백을 지웁니다.
 			idNum = br.readLine().replace(" ", "").replace("\t", "");
 			if (idNum.equals("exit")) {// while문 탈출조건
 				exitText();
 				isRun = true;
-			}
-			if (idNum.length() == 14) {
+			}else if (idNum.length() == 14) {
 				inspectNum(idNum);
 			} else {
 				System.err.println("-을 제외하고 모두 0 ~ 9 숫자이어야 합니다.");
 				total[2] += 1;
 			}
+			
 		}
 
 	}
