@@ -7,7 +7,11 @@ import javafx.stage.Stage;
 
 /*절차1 Application 상속*/
 public class MainView extends Application {
-
+	
+	
+	
+	
+	
 	/*절차2 추상메소드 구현*/
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -23,6 +27,7 @@ public class MainView extends Application {
 		stage.setScene(scene);/*화면관리자 등록*/
 		
 		stage.show();
+		
 		
 	}
 
