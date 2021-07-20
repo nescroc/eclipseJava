@@ -1,5 +1,6 @@
 package com.sen.multicast;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -33,10 +34,16 @@ public class MultiServer {
 					//MultiServerThread를 저장하고 있는 Client객체를 생성한다.
 					MultiServerThread t =
 							new MultiServerThread(clientList,socket);
-					
+					//스레드 시작함.
+					t.start();
+					//생성된  MultiSErverThread 객체를 clientList에 저장
+					clientList.add(t);
 				}
-			} catch (Exception e) {
-
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
 			}
+	}
+	public static void main(String[] args) {
+		new MultiServer();
 	}
 }
