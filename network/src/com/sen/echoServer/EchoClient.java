@@ -11,12 +11,13 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class EchoClient {
+	Socket socket =null;
 	public EchoClient() {
 		try {
 			// 1. 서버와 통신할 소켓 생성
 			// 연결한 서버의 ip와 port번호를 지정한다.
 			// 소켓을 생성하는 순간 해당 ip의 port번호로 연결을 요청한다.
-			Socket socket = new Socket("localhost", 3000);
+			socket = new Socket("localhost", 3000);
 			// 2. 소켓으로부터 inputStream과 outputStream 얻기
 			OutputStream os = socket.getOutputStream();
 			InputStream is = socket.getInputStream();

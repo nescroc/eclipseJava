@@ -12,11 +12,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
-	
+	ServerSocket serverSocket =null;
 	public EchoServer() {
 		try {
 			//1. 서버소켓 생성
-				ServerSocket serverSocket = new ServerSocket(3000);
+				serverSocket = new ServerSocket(3000);
 				System.out.println("서버 기동됨");
 			//2.클라이언트의 접속을 기다림(청취함.)
 			//서버소켓은 클라이언트의 연결요청이 접수되면

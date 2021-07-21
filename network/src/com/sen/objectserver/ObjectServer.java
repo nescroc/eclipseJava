@@ -37,10 +37,15 @@ public class ObjectServer {
 			System.out.println("비밀번호 : "+member.getPwd());
 			//클라이언트에 메세지 전달
 			oos.writeObject("["+member.getId()+"]님 로그인 성공");
+			
+			serverSocket.close();
 		} catch (IOException e) {
 				e.printStackTrace();
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args) {
+		new ObjectServer();
 	}
 }
