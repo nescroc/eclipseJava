@@ -16,7 +16,7 @@ public class PcmsLayout extends Application {
 		/* FXML을 이용한 컨테이너 객체생성 */
 		try {
 			
-			URL resource = getClass().getResource("CustomerLayout.fxml");
+			URL resource = getClass().getResource("PcmsLayout.fxml");
 			System.out.println(1);
 			AnchorPane root = (AnchorPane) FXMLLoader.load(resource);
 			System.out.println(2);
