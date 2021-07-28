@@ -7,7 +7,7 @@ public class MyMember implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String pwd;
-
+	
 	public String getId() {
 		return id;
 	}

@@ -1,4 +1,4 @@
-package com.sen.JavaFxml;
+package com.sen.pcms.customer.fxml;
 
 import java.net.URL;
 
@@ -9,15 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MainView2 extends Application {
-	  
+public class CustomerLayout extends Application {
+	 
 	
 	@Override
 	public void start(Stage stage) {
 		/* FXML을 이용한 컨테이너 객체생성 */
 		try {
-			
-			URL resource = getClass().getResource("RootLayout2.fxml");
+					
+			URL resource = getClass().getResource("CustomerLayout.fxml");
 			AnchorPane root = (AnchorPane) FXMLLoader.load(resource);
 			Scene scene = new Scene(root);
 
