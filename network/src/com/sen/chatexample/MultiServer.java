@@ -19,8 +19,23 @@ public class MultiServer {
 			socket = serverSocket.accept();
 			mst = new MultiServerThread(this);
 			list.add(mst);
-			
+			Thread t = new Thread(mst);
+			t.start();
+		}		
+		serverSocket.close();
+	}
+	public ArrayList<MultiServerThread> getList(){
+		return list;
+	}
+	public Socket getSocket() {
+		return socket;
+	}
+	
+	public static void main(String[] args) {
+		try {
+			new MultiServer();
+		} catch (IOException e) {		
+			e.printStackTrace();
 		}
 	}
-
 }

@@ -14,6 +14,7 @@ public class PcmsServer {
 				new ArrayList<PcmsServerThread>();
 	public ServerSocket server = null;
 	public PcmsServer() {
+			
 			try {
 				//5000번 포트번호에서 클라이언트의 접속요청을
 				//기다리고 있는 서버소켓 생성
@@ -45,7 +46,7 @@ public class PcmsServer {
 	}
 	
 	
-//	public static void main(String[] args) {
-//		new MultiServer();
-//	}
+	public static void main(String[] args) {
+		new PcmsServer();
+	}
 }

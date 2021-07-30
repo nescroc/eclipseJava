@@ -1,4 +1,4 @@
-package com.sen.pcms.controller;
+package com.sen.pcms.customer.fxml;
 
 import java.net.URL;
 import java.util.ResourceBundle;
