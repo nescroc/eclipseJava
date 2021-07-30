@@ -8,15 +8,16 @@ public class CustomerVO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private int cno;//회워번호
 	private String cid;
 	private String cname;
-	private String cnum;
+	private String cnum;//휴대폰번호
 	private int csec;
 	private Date cdate;
 	private String caddress;
 	private String cpwd;
 	private String cemail;
-	private int cno;
 	private int grant;
 	// ----------------서버가 가지고 있어야할 상태들---------
 	private String msg;
