@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <HBox prefHeight="26.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="whoLabel" text="Label">
+               <font>
+                  <Font name="Consolas" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="13.0" right="10.0" top="4.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="msgArea" prefHeight="23.0" prefWidth="251.0">
+               <HBox.margin>
+                  <Insets top="2.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="sendbtn" mnemonicParsing="false" prefHeight="23.0" prefWidth="47.0" text="send">
+               <HBox.margin>
+                  <Insets left="5.0" top="2.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <center>
+      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

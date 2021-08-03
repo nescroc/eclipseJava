@@ -2,33 +2,34 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="930.0" prefWidth="1300.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-	
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="930.0" prefWidth="1300.0" style="-fx-background-color: #E5FFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sen.pcms.fxml.Controller">
+
 	<children>
-		<Pane layoutX="240.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1050.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="10.0">
+		<Pane layoutX="221.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1050.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="29.0">
 			<opaqueInsets>
 				<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
 			</opaqueInsets>
-			<effect>
-				<InnerShadow choke="0.09" color="#d2e0eb" height="255.0" radius="127.0" width="255.0" />
-			</effect>
 			<cursor>
 				<Cursor fx:constant="DEFAULT" />
 			</cursor>
 			<children>
-				<GridPane hgap="10.0" layoutX="20.0" layoutY="20.0" mouseTransparent="true" prefHeight="650.0" prefWidth="1003.0" vgap="10.0">
+				<GridPane gridLinesVisible="true" hgap="10.0" layoutX="20.0" layoutY="20.0" mouseTransparent="true" prefHeight="650.0" prefWidth="1003.0" vgap="10.0">
 					<columnConstraints>
 						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,43 +41,623 @@
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
+					<opaqueInsets>
+						<Insets />
+					</opaqueInsets>
+					<children>
+						<VBox fx:id="v1" prefHeight="200.0" prefWidth="100.0">
+							<children>
+								<Label fx:id="seatNo" text="1" textAlignment="CENTER">
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v3" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+							<children>
+								<Label fx:id="seatNo3" text="3" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v4" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+							<children>
+								<Label fx:id="seatNo4" text="4" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v5" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+							<children>
+								<Label fx:id="seatNo5" text="5" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v6" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+							<children>
+								<Label fx:id="seatNo6" text="6" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v7" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+							<children>
+								<Label fx:id="seatNo7" text="7" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v8" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+							<children>
+								<Label fx:id="seatNo8" text="8" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v9" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+							<children>
+								<Label fx:id="seatNo9" text="9" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v10" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+							<children>
+								<Label fx:id="seatNo10" text="10" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v11" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+							<children>
+								<Label fx:id="seatNo11" text="11" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v12" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+							<children>
+								<Label fx:id="seatNo12" text="12" textAlignment="CENTER">
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+						<VBox fx:id="v2" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+							<children>
+								<Label fx:id="seatNo2" text="2" textAlignment="CENTER">
+									<VBox.margin>
+										<Insets bottom="10.0" />
+									</VBox.margin>
+									<font>
+										<Font name="Courier New" size="35.0" />
+									</font>
+								</Label>
+								<Label fx:id="userLabel" text="user" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userTime" text="time- 00:00" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets bottom="10.0" left="50.0" />
+									</VBox.margin>
+								</Label>
+								<Label fx:id="userStatus" text="user-status" textAlignment="CENTER">
+									<font>
+										<Font name="Consolas" size="20.0" />
+									</font>
+									<VBox.margin>
+										<Insets left="50.0" />
+									</VBox.margin>
+								</Label>
+							</children>
+						</VBox>
+					</children>
 				</GridPane>
 			</children>
 		</Pane>
-		<MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1300.0">
-			<menus>
-				<Menu mnemonicParsing="false" text="File">
-					<items>
-						<MenuItem mnemonicParsing="false" text="Close" />
-					</items>
-				</Menu>
-				<Menu mnemonicParsing="false" text="Edit">
-					<items>
-						<MenuItem mnemonicParsing="false" text="Delete" />
-					</items>
-				</Menu>
-				<Menu mnemonicParsing="false" text="Help">
-					<items>
-						<MenuItem mnemonicParsing="false" text="About" />
-					</items>
-				</Menu>
-				<Menu mnemonicParsing="false" text="Unspecified Menu">
-					<items>
-						<MenuItem mnemonicParsing="false" text="Action 1" />
-					</items>
-				</Menu>
-			</menus>
-		</MenuBar>
-		<ScrollPane hbarPolicy="ALWAYS" layoutX="20.0" layoutY="465.0" prefHeight="320.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="1080.0" AnchorPane.topAnchor="480.0">
-			<content>
-				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-			</content>
-		</ScrollPane>
+		<Pane prefHeight="700.0" prefWidth="215.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0">
+			<opaqueInsets>
+				<Insets />
+			</opaqueInsets>
+			<children>
+				<VBox prefHeight="700.0" prefWidth="215.0">
+					<children>
+                  <HBox prefHeight="29.0" prefWidth="215.0">
+                     <children>
+      						<TextField fx:id="searchArea">
+                           <HBox.margin>
+                              <Insets top="3.0" />
+                           </HBox.margin>
+                        </TextField>
+      						<Button fx:id="searchbtn" alignment="TOP_LEFT" mnemonicParsing="false"  prefHeight="23.0" prefWidth="64.0" text="search" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="7.0" top="3.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+      						</Button>
+                     </children>
+                  </HBox>
+						<TableView fx:id="searchTable" prefHeight="200.0" prefWidth="200.0">
+							
+								<columns>
+									<TableColumn fx:id="nameColumn" prefWidth="66" text="Name" />
+									<TableColumn fx:id="idColumn" prefWidth="66" text="Id" />
+									<TableColumn fx:id="toColumn" prefWidth="81.99993896484375" text="TimeOwned" />									
+								</columns>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>							
+						</TableView>
+						<HBox prefHeight="230.0" prefWidth="215.0">
+							<children>
+								<VBox prefHeight="200.0" prefWidth="100.0">
+									<children>
+										<Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="ID">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</Label>
+										<Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="name">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</Label>
+										<Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="birth">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</Label>
+										<Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="time own">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</Label>
+										<Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="join date">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</Label>
+										<Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="e-mail">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</Label>
+										<Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="phone nubmer">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</Label>
+										<Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="address">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</Label>
+                              <Label alignment="CENTER" prefHeight="23.0" prefWidth="100.0" text="status" />
+									</children>
+								</VBox>
+								<VBox prefHeight="200.0" prefWidth="100.0">
+									<children>
+										<TextField fx:id="idArea" editable="false">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</TextField>
+										<TextField fx:id="nameArea" editable="false">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</TextField>
+										<TextField fx:id="birthArea" editable="false">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</TextField>
+										<TextField fx:id="timeArea" editable="false">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</TextField>
+										<TextField fx:id="joinArea" editable="false">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</TextField>
+										<TextField fx:id="emailArea" text="example@e.com">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</TextField>
+										<TextField fx:id="pnumArea" editable="false" text="010-1010-100">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</TextField>
+										<TextField fx:id="addressArea" editable="false" text="--">
+											<VBox.margin>
+												<Insets bottom="5.0" />
+											</VBox.margin>
+										</TextField>
+                              <TextField fx:id="addressArea1" editable="false" text=" suspend" />
+									</children>
+								</VBox>
+							</children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+						</HBox>
+                  <ButtonBar buttonMinWidth="55.0" prefHeight="40.0" prefWidth="200.0">
+                    <buttons>
+                        <Button fx:id="startbt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="start" />
+                        <Button fx:id="stopbt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="stop" />
+                    </buttons>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                  </ButtonBar>
+                  <ButtonBar buttonMinWidth="55.0" prefHeight="40.0" prefWidth="200.0">
+                     <buttons>
+                        <Button fx:id="suspendbt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="suspend" />
+                        <Button fx:id="movebt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="move" />
+                     </buttons>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                  </ButtonBar>
+                  <ButtonBar buttonMinWidth="55.0" prefHeight="40.0" prefWidth="200.0">
+                     <buttons>
+                        <Button fx:id="addtimebt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="add time" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="edit" />
+                     </buttons>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                  </ButtonBar>
+                  <ButtonBar buttonMinWidth="55.0" prefHeight="40.0" prefWidth="200.0">
+                     <buttons>
+                        <Button fx:id="addtimebt1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="clear" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="edit" />
+                     </buttons>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                  </ButtonBar>
+					</children>
+				</VBox>
+			</children>
+		</Pane>
 	</children>
 	<effect>
 		<Reflection />
 	</effect>
+	<opaqueInsets>
+		<Insets />
+	</opaqueInsets>
 </AnchorPane>

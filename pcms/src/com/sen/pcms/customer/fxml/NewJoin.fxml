@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="193.0" layoutY="197.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="200.0" text="Items marked with * are required">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="120.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="200.0" text="* ID">
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="200.0" text="* name">
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="200.0" text="(over 6, under 20) * password">
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="200.0" text="confirm password">
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="6.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="200.0" text="   * birth">
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="200.0" text="* e-mail">
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="6.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="200.0" text="address">
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="200.0" text="* phone number">
+                     <font>
+                        <Font name="Consolas" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="553.0" prefWidth="0.0" />
+            <VBox prefHeight="553.0" prefWidth="249.0">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="joinIdField">
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="152.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="isAblebtn" mnemonicParsing="false" text="search">
+                           <HBox.margin>
+                              <Insets left="8.0" top="152.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Label fx:id="resultlb" text="able" textFill="#12e12d" visible="false">
+                           <HBox.margin>
+                              <Insets left="7.0" top="158.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TextField fx:id="joinNaem">
+                     <VBox.margin>
+                        <Insets bottom="5.0" right="150.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox prefHeight="23.0" prefWidth="249.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <PasswordField fx:id="pwArea1">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </PasswordField>
+                        <Label fx:id="pwResult" prefHeight="23.0" prefWidth="31.0" text="able" textFill="#42cd2f" visible="false">
+                           <HBox.margin>
+                              <Insets left="7.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <PasswordField fx:id="pwArea2">
+                     <VBox.margin>
+                        <Insets bottom="6.0" right="112.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <DatePicker fx:id="birthCalendar">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <HBox prefHeight="23.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="emailPrefix" prefHeight="23.0" prefWidth="86.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <Label text="\@">
+                           <HBox.margin>
+                              <Insets left="2.0" right="2.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="emailSuffix" prefHeight="23.0" prefWidth="86.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="6.0" />
+                     </padding>
+                  </HBox>
+                  <TextField fx:id="addressArea" prefHeight="23.0" prefWidth="139.0">
+                     <VBox.margin>
+                        <Insets bottom="3.0" right="110.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="phoneArea" prefHeight="23.0">
+                     <VBox.margin>
+                        <Insets right="110.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button fx:id="confirmbtn" alignment="CENTER_RIGHT" mnemonicParsing="false" text="join">
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

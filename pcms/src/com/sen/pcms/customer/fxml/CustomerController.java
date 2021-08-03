@@ -3,33 +3,53 @@ package com.sen.pcms.customer.fxml;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sen.pcms.clientserver.CustomerClient;
+import com.sen.pcms.clientserver.CustomerClientThread;
+
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class CustomerController implements Initializable {
 	
+	//CustomerClient cc;
+	CustomerClientThread clientThread;
 	@FXML
-	private Button btn1;
+	private TextField loginIdArea;
 	@FXML
-	private TextArea textArea1;
+	private PasswordField loginPwArea;
+	@FXML
+	private Button loginSubmitbtn;
+	@FXML
+	private Button joinbtn;
+	@FXML
+	private Button forgetIdbtn;
+	@FXML
+	private Button forgetPwbtn;
+	
+	
+	/*
+	 * @FXML private ComboBox<T>
+	 */
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		textArea1.setText("textArea1");
-		textArea1.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent event) {
-				System.out.println(event.getText());
-			};
-		});
+		Runnable cr = new CustomerClient();
+		Thread ct = new Thread(cr);
+		ct.start();
+		/*
+		 * textArea1.setText("textArea1"); textArea1.setOnKeyPressed(new
+		 * EventHandler<KeyEvent>() { public void handle(KeyEvent event) {
+		 * System.out.println(event.getText()); }; });
+		 */
 	}
 
-	@FXML public void click(ActionEvent event) {
-		textArea1.setText("버튼클릭 이벤트");
+	@FXML
+	public void click(ActionEvent event) {
+		/* textArea1.setText("버튼클릭 이벤트"); */
 	}
-
+	
 }

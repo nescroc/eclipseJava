@@ -8,12 +8,15 @@ public class CustomerVO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private int cno;//회워번호
+	
+	private int  protocol;
+	private int cno;//회원번호
 	private String cid;
 	private String cname;
 	private String cnum;//휴대폰번호
-	private int csec;
+	
+
+	private int csec; //보유시간
 	private Date cdate;
 	private String caddress;
 	private String cpwd;
@@ -22,7 +25,8 @@ public class CustomerVO implements Serializable {
 	// ----------------서버가 가지고 있어야할 상태들---------
 	private String msg;
 	private int cstatus;
-
+	private int seatNo;
+	
 	public String getMsg() {
 		return msg;
 	}
@@ -124,6 +128,22 @@ public class CustomerVO implements Serializable {
 
 	public void setGrant(int grant) {
 		this.grant = grant;
+	}
+
+	public int getProtocol() {
+		return protocol;
+	}
+
+	public void setProtocol(int protocol) {
+		this.protocol = protocol;
+	}
+
+	public int getSeatNo() {
+		return seatNo;
+	}
+
+	public void setSeatNo(int seatNo) {
+		this.seatNo = seatNo;
 	}
 
 }
