@@ -6,22 +6,23 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import com.sen.pcms.customer.fxml.CustomerController;
+
 public class CustomerClient implements Runnable {
 	// 서버랑 연결된 Socket
 	private Socket socket;
 	// 서버가 보낸 메세지를 읽어들일 스트림
-	private ObjectInputStream ois;
+	public ObjectInputStream ois;
 	// 서버로 메시지를 전송 할 스트림
-	private ObjectOutputStream oos;
+	public ObjectOutputStream oos;
 	// 키보드 입력내용을 읽어들일 스트림
-	private CustomerClientThread cct;
+	CustomerController cc;
+	
 
-	public CustomerClient() {
-		
+	public CustomerClient(CustomerController cc) {
+		this.cc = cc;
 	}	
-	public CustomerClientThread getclientThread() {		
-		return cct;			
-	}
+	
 	@Override
 	public void run() {
 		try {
@@ -33,7 +34,7 @@ public class CustomerClient implements Runnable {
 			// 서버가 전송한 메세지를 읽어들일 읽기 전용 Thread를 생성
 			// MutliClientThread 생성시에
 			// 서버가 전송한 메세지를 읽어들일 수 있는 스트림을 전달.
-			CustomerClientThread t = new CustomerClientThread(ois);
+			CustomerClientThread t = new CustomerClientThread(ois,cc);
 			t.start();
 			//읽어와서 서버로 전송하기
 			
@@ -43,8 +44,5 @@ public class CustomerClient implements Runnable {
 			e.printStackTrace();
 		}
 		 
-	}
-	public ObjectOutputStream getOos() {
-		return this.oos;
 	}
 }

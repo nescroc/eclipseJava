@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 public class CustomerController implements Initializable {
 	
 	//CustomerClient cc;
-	CustomerClientThread clientThread;
+	CustomerClientThread cct;
 	@FXML
 	private TextField loginIdArea;
 	@FXML
@@ -37,7 +37,7 @@ public class CustomerController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Runnable cr = new CustomerClient();
+		Runnable cr = new CustomerClient(this);
 		Thread ct = new Thread(cr);
 		ct.start();
 		/*
@@ -50,6 +50,9 @@ public class CustomerController implements Initializable {
 	@FXML
 	public void click(ActionEvent event) {
 		/* textArea1.setText("버튼클릭 이벤트"); */
+	}
+	public void setThread(CustomerClientThread cct) {
+		this.cct = cct;
 	}
 	
 }

@@ -4,23 +4,25 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import com.sen.pcms.VO.CustomerVO;
-import com.sen.pcms.fxml.Controller;
+import com.sen.pcms.clientserver.CustomerClientThread;
+import com.sen.pcms.customer.fxml.CustomerController;
 import com.sen.pcms.server.PcmsServerThread;
 import com.sen.pcms.util.Protocol;
 
-public class PcmsServerServiceImpl {
+public class CustomerServerService {
 
-	private Controller controller;
+	private CustomerController customerController;
+
 	public HashMap<Integer, PcmsServerThread> clientList;
 
-	public PcmsServerServiceImpl(Controller controller) {
-		this.controller = controller;
+	public CustomerServerService(CustomerController customerController) {
+		this.customerController= customerController;
 
 	}
+
 	
-	
-	
-	public void serviceAnalysis(CustomerVO cv, PcmsServerThread pst) throws IOException {
+
+	public void serviceAnalysis(CustomerVO cv, CustomerClientThread pst) throws IOException {
 
 		int protocol = cv.getProtocol();
 		switch (protocol) {
@@ -80,7 +82,5 @@ public class PcmsServerServiceImpl {
 		this.clientList = clientList;
 	}
 
-	public PcmsServerServiceImpl getPcmsServerServiceImpl() {
-		return this;
-	}
+	
 }

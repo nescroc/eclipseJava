@@ -29,10 +29,11 @@ public class PcmsServer implements Runnable {
 			// 5000번 포트번호에서 클라이언트의 접속요청을
 			// 기다리고 있는 서버소켓 생성
 			clientList = new HashMap<Integer, PcmsServerThread>();
+			seatInit();
 			pssi.setThreadMap(clientList);			
 			server = new ServerSocket(5000);
 			System.out.println("서버시작됨...");
-			seatInit();
+			
 			while (!serverRun) {
 				// 클라이언트의 연결요청을 대기하고 있다가
 				// 연결요청이 접수되면 해당 클라이언트랑 통신 할 수있는
@@ -48,7 +49,7 @@ public class PcmsServer implements Runnable {
 				// client랑 송수신 할 수 있는 기능을 가진
 				// MultiServerThread를 저장하고 있는 Client객체를 생성한다.
 				PcmsServerThread pst = 
-						new PcmsServerThread(pssi,clientList, socket);
+						new PcmsServerThread(pssi, socket);
 				// 스레드 시작함.
 			pst.start();
 				// 생성된 MultiSErverThread 객체를 clientList에 저장

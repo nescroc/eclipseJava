@@ -1,7 +1,5 @@
 package com.sen.javafxml7;
 
-import java.net.URL;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,8 +11,13 @@ public class MainView extends Application {
 	@Override
 	public void start(Stage stage)  {
 		try {
-			URL resource =getClass().getResource("RootLayout.fxml");
-			AnchorPane root = (AnchorPane)FXMLLoader.load(resource);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("RootLayout.fxml"));
+			//URL resource =getClass().getResource("RootLayout.fxml");
+			//System.out.println(resource);
+			
+			AnchorPane root = loader.load(); 
+			
+					//(AnchorPane)FXMLLoader.load(resource);
 			Scene scene = new Scene(root);
 			
 			String urlStr = getClass().getResource("design.css").toExternalForm();

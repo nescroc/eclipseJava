@@ -9,13 +9,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class CustomerLayout extends Application {
-	 
-	
+
 	@Override
 	public void start(Stage stage) {
 		/* FXML을 이용한 컨테이너 객체생성 */
 		try {
-				System.out.println(1);
+			System.out.println(1);
 			URL resource = getClass().getResource("LoginLayout.fxml");
 			System.out.println(resource.toString());
 			AnchorPane root = (AnchorPane) FXMLLoader.load(resource);
