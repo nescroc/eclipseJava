@@ -2,15 +2,21 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="150.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
-      <Label layoutX="25.0" layoutY="80.0" text="(12자 이내)" />
-      <Label layoutX="38.0" layoutY="61.0" text="닉네임" />
-      <TextField fx:id="loginArea" layoutX="89.0" layoutY="57.0" prefHeight="23.0" prefWidth="167.0" />
-      <Button fx:id="loginbt" layoutX="262.0" layoutY="57.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0" text="등록" AnchorPane.rightAnchor="37.0" />
-      <Label fx:id="resultlb" alignment="CENTER" layoutX="89.0" layoutY="84.0" prefHeight="23.0" prefWidth="167.0" />
+      <Label layoutX="38.0" layoutY="48.0" text="아이디" />
+      <TextField fx:id="loginArea" layoutX="89.0" layoutY="43.0" prefHeight="23.0" prefWidth="167.0" />
+      <Button fx:id="loginbt" layoutX="264.0" layoutY="43.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="59.0" text="로그인" AnchorPane.rightAnchor="21.0">
+         <font>
+            <Font size="12.0" />
+         </font></Button>
+      <Label fx:id="resultlb" alignment="CENTER" layoutX="89.0" layoutY="113.0" prefHeight="23.0" prefWidth="167.0" />
+      <PasswordField fx:id="pwdArea" layoutX="89.0" layoutY="75.0" prefHeight="29.0" prefWidth="167.0" />
+      <Label layoutX="23.0" layoutY="80.0" text="패스워드" />
    </children>
 </AnchorPane>
