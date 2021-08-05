@@ -1,4 +1,4 @@
-package com.sen.util;
+package src.com.sen.server.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

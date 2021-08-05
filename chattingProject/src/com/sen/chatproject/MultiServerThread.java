@@ -1,4 +1,4 @@
-package com.sen.chatproject;
+package src.com.sen.chatproject;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

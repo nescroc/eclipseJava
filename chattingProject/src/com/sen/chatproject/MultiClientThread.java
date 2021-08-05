@@ -1,4 +1,4 @@
-package com.sen.chatproject;
+package src.com.sen.chatproject;
 
 public class MultiClientThread extends Thread {
 	private MultiClient mc;

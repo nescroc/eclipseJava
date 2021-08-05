@@ -1,4 +1,4 @@
-package com.sen.serverStart;
+package src.com.sen.server.starter;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

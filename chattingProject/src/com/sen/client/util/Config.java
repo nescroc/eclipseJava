@@ -1,4 +1,4 @@
-package com.sen.clientUtil;
+package src.com.sen.client.util;
 
 import java.nio.channels.SocketChannel;
 
