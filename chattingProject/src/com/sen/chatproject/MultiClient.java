@@ -1,4 +1,4 @@
-package src.com.sen.chatproject;
+package com.sen.chatproject;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

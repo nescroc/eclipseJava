@@ -1,4 +1,4 @@
-package src.com.sen.container;
+package com.sen.container;
 
 public class Container {
 

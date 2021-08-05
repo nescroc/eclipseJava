@@ -1,4 +1,4 @@
-package src.com.sen.chatproject;
+package com.sen.chatproject;
 
 import java.io.IOException;
 import java.net.ServerSocket;

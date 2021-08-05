@@ -1,4 +1,4 @@
-package src.com.sen.server.util;
+package com.sen.server.util;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
