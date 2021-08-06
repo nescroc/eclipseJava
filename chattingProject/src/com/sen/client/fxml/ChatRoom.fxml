@@ -9,8 +9,6 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
@@ -18,17 +16,9 @@
 	<children>
 		<AnchorPane>
    			<children>
-      			<TextArea fx:id="txtDisplay" editable="false" layoutX="136.0" layoutY="41.0" prefHeight="369.0" prefWidth="450.0" AnchorPane.leftAnchor="136.0" />
+      			<TextArea fx:id="chatArea" editable="false" layoutX="136.0" layoutY="41.0" prefHeight="369.0" prefWidth="450.0" AnchorPane.leftAnchor="136.0" />
     		    <TextField fx:id="txtInput" disable="true" layoutX="135.0" layoutY="414.0" prefHeight="28.0" prefWidth="375.0" text="" />
-    		    <Button fx:id="btnSend" disable="true" layoutX="515.0" layoutY="414.0" prefHeight="28.0" text="전송"> 
-      				<graphic>
-      						<ImageView fitHeight="20" fitWidth="20">
-      							<image>
-                       				 <Image url="@../../Style/img/send.png" />
-                     			</image>
-      						</ImageView>
-	  				</graphic>
-      			</Button>
+    		    <Button fx:id="btnSend" disable="true" layoutX="515.0" layoutY="414.0" prefHeight="28.0" prefWidth="71.0" text="전송" />
      			<ListView fx:id="listView" layoutX="7.0" layoutY="41.0" prefHeight="369.0" prefWidth="120.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="473.0" />
 		      <ToolBar prefHeight="35.0" prefWidth="325.0">
 		         <items>

@@ -10,14 +10,20 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 public class SysInfo {
 	public static Connection DbConnection;
-	/** nio 서버 소켓 채널**/
+	/** nio 서버 소켓 채널 **/
 	public static ServerSocketChannel serverSocketChannel;
-	/** 쓰레드 풀**/
+	/** 쓰레드 풀 **/
 	public static ThreadPoolExecutor threadPoolExecutor;
-	/** 소켓 맵**/
-	public static ConcurrentHashMap<SocketChannel, String> users; 
-	
+	/** 소켓 맵 **/
+	public static ConcurrentHashMap<SocketChannel, String> users;
+
 	public static Charset charset = Charset.forName("UTF-8");
-	
+
 	public static Properties dbprops;
+
+	
+
+	/* private static int port = 5001;
+	 * public int getPort() { return port; }
+	 */
 }
