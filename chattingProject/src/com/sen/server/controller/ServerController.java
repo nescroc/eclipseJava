@@ -32,8 +32,7 @@ public class ServerController implements Initializable {
 	public Button serverStopBt;
 	@FXML
 	public Button btnBlock;
-	@FXML
-	public Button logbt;
+	
 	// 출력창 : 디스플레이
 	@FXML
 	public TextArea txtDisplay;
@@ -121,4 +120,5 @@ public class ServerController implements Initializable {
 		threadSize.setText("0");
 		clientSize.setText("0");
 	}
+	
 }

@@ -6,27 +6,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.sen.server.util.ConnUtil;
+import com.sen.server.viewload.ServerViewLoader;
 
 public class UserDAO {
-
-	/*
-	 * 
-	 * 
-	 * chat_idAble select cid from chat where cid = ? chat_joinMember insert into
-	 * chat(cno,cid,cpw) values(cno_sequence.nextVal,?,?)
-	 * 
-	 * chat_login select cid,cpw from chat where c
-	 * 
-	 * chat_banId update chat set banned = 1 where cid = ? chat_unbanId update chat
-	 * set banned = 0 where cid = ?
-	 * 
-	 * chat_banList select cid from chat where banned = 1
-	 * 
-	 */
-
 	private Properties props;
 	private Connection conn;
 
@@ -90,13 +76,69 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				if (cpw.equals(rs.getString("cpw"))) {
-					return Protocol.LOGIN_SUCCESS;
+				if (rs.getInt("banned") == 0) {
+					if (cpw.equals(rs.getString("cpw"))) {
+						return Protocol.LOGIN_SUCCESS;
+					}
+					return Protocol.LOGIN_FAIL_PW;
+				} else {
+					return Protocol.LOGIN_FAIL_BANNED;
 				}
-				return Protocol.LOGIN_FAIL_PW;
 			}
 		} catch (SQLException e) {}
 		return Protocol.LOGIN_FAIL_ID;
+	}
+
+	public ArrayList<String> getBlackList() {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<String> banList = new ArrayList<String>();
+		try {
+			pstmt = conn.prepareStatement(props.getProperty("chat_banList"));
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				banList.add(rs.getString("cid"));
+			}
+			return banList;
+		} catch (SQLException e) {
+		}
+		return null;
+	}
+
+	public int addBlack(String banId) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(props.getProperty("chat_banAble"));
+			pstmt.setString(1, banId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt("banned")==0) {
+					pstmt = conn.prepareStatement(props.getProperty("chat_banId"));
+					pstmt.setString(1, banId);
+					result = pstmt.executeUpdate();					
+				}				
+			}else if(!rs.next()){
+				ServerViewLoader.svc0.txtDisplay.appendText("존재하지 않는 id 입니다.");
+			}
+		} catch (Exception e) {
+			return result;
+		}
+		return result;
+	}
+
+	public int unBanId(String unbanId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(props.getProperty("chat_unbanId"));
+			pstmt.setString(1, unbanId);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			return result;
+			}
+		return result;
 	}
 
 }

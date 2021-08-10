@@ -40,8 +40,9 @@
 		          <TableColumn prefWidth="62.0" text="인원" />
 		        </columns>
 		      </TableView>
-            <TextArea fx:id="roomchatArea" layoutY="235.0" prefHeight="192.0" prefWidth="603.0" />
-            <TextField fx:id="roomInputField" layoutY="427.0" prefHeight="23.0" prefWidth="275.0" />
+            <TextArea fx:id="roomchatArea" editable="false" layoutY="235.0" prefHeight="192.0" prefWidth="603.0" />
+            <TextField fx:id="roomInputField" layoutX="87.0" layoutY="427.0" prefHeight="23.0" prefWidth="516.0" />
+            <TextField fx:id="whisperId" layoutY="427.0" prefHeight="23.0" prefWidth="80.0" />
 		   </children>
 		</AnchorPane>
 	</children>

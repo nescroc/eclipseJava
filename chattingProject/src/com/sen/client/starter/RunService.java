@@ -31,7 +31,7 @@ public class RunService extends Application {
 		stage.setResizable(false);
 		
 		stage.show();
-		System.out.println("여기까지");
+		
 	}
 
 	@Override

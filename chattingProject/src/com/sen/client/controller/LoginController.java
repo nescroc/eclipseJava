@@ -9,7 +9,6 @@ import com.sen.server.service.Packet;
 import com.sen.server.service.Protocol;
 
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,8 +38,8 @@ public class LoginController implements Initializable {
 		newjoinbt.setOnAction(e -> {
 			joinAction(e);
 		});
-		loginbt.setOnAction(e -> {
-			loginAction(e);
+		loginbt.setOnAction(e -> {			
+						loginAction(e);			
 		});
 		loginArea.setOnAction(e -> {
 			loginAction(e);
@@ -49,10 +48,7 @@ public class LoginController implements Initializable {
 			loginAction(e);
 		});
 		newjoinbt.setOnAction(e -> {
-			Platform.runLater(() -> {
-				resultlb.setStyle("-fx-text-fill:red;" + "-fx-font-size:11;");
-				resultlb.setText("아직 구현안함");
-			});
+			joinAction(e);
 		});
 	}
 
@@ -86,7 +82,6 @@ public class LoginController implements Initializable {
 				packet.setCpw(pw);			
 				
 				Config.socketService.sender(packet);
-
 				return;
 			}
 
@@ -107,9 +102,9 @@ public class LoginController implements Initializable {
 
 	/** 아이디 라벨, 버튼 이벤트 처리 **/
 	public void loginAction(ActionEvent event) {
-		Task<Void> task = new Task<Void>() {
+		Runnable rn = new Runnable() {
 			@Override
-			protected Void call() throws Exception {
+			public void run() {
 				String id = loginArea.getText();
 				String pw = pwdArea.getText();				
 				if (Inspector.isWhiteSpace(id)) {
@@ -119,7 +114,7 @@ public class LoginController implements Initializable {
 						loginArea.clear();
 						pwdArea.clear();
 					});
-					return null;
+					return;
 				}
 				if (Inspector.isCharSize(id) || Inspector.isCharSize(pw)) {
 					Platform.runLater(() -> {
@@ -128,20 +123,21 @@ public class LoginController implements Initializable {
 						loginArea.clear();
 						pwdArea.clear();
 					});
-					return null;
+					return;
 				}
 				Packet packet = new Packet();
 				packet.setProtocol(Protocol.LOGIN_REQUEST);
+				packet.setIp(Config.userInfo.getIp());
 				packet.setCid(id);
 				packet.setCpw(pw);
 
 				Config.socketService.sender(packet);
-				return null;
+				return ;
 			}
 
 		};
 		System.out.println("task 작업");
-		Thread thread = new Thread(task);
+		Thread thread = new Thread(rn);
 		thread.start();
 	}
 }

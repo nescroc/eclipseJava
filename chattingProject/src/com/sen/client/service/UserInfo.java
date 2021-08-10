@@ -2,7 +2,7 @@ package com.sen.client.service;
 
 import java.io.Serializable;
 
-public class UserDTO implements Serializable{
+public class UserInfo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	

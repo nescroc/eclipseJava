@@ -17,48 +17,34 @@ public class MultiChatRunnable implements Runnable {
 	
 	public MultiChatRunnable(SocketChannel socketChannel, UserDTO userDTO) {
 		this.socketChannel = socketChannel;
-		this.userDTO = userDTO;		
+		this.userDTO = userDTO;	
+		this.userDTO.setCid("root");
 		SysInfo.users.put(this, this.userDTO);
+		
 	}
 	@Override
 	public void run() {
 
 		try {			
-			objectInputStream = new ObjectInputStream(socketChannel.socket().getInputStream());
-			objectOutputStream = new ObjectOutputStream(socketChannel.socket().getOutputStream());
+			
+			
 			while (true) {
+				objectOutputStream = new ObjectOutputStream(socketChannel.socket().getOutputStream());
+				objectInputStream = new ObjectInputStream(socketChannel.socket().getInputStream());
 				Packet packet = (Packet)objectInputStream.readObject();  				
 				// Log.receive(socketChannel, Thread.currentThread().getName());
 				
 				System.out.println(packet.getProtocol());
-				
+				System.out.println(12345);
 				ServiceDistribution.packetDecompose(this, packet);
-				
-				//Protocol과 Object를 써서 구현할것
-				
-				
-				/*
-				 * ServerViewLoader.svc0.updateStatus(); if (d != null) {
-				 * SysInfo.users.put(socketChannel, ip);
-				 * System.out.println(SysInfo.users.toString());
-				 * 
-				 * 
-				 * }
-				 */
-				
-					
-								 
-				//send.sendAll(socketChannel, d);
+				System.out.println("6789");
 			}
 		} catch (IOException e) {					
 			SysInfo.users.remove(this);					
 			ServerViewLoader.svc0.updateStatus();					
 			try {if(socketChannel.isOpen())socketChannel.close();}
 							catch (IOException ioe) {}
-		} catch (ClassNotFoundException cnfe) {
-			System.out.println("패킷전송실패");
-			cnfe.printStackTrace();
-		}
+		} catch (ClassNotFoundException cnfe) {}
 	}
 	
 }

@@ -25,10 +25,13 @@ public class Protocol implements Serializable{
 	public static final int LOGIN_FAIL_ID = 300;
 	public static final int LOGIN_FAIL_PW = 301;
 	public static final int JOIN_FAIL_EXIST_ID = 302;
+	public static final int LOGIN_FAIL_BANNED = 303;
 	
 	public static final int SEND_ALL = 500;
 	public static final int SEND_WHISPER = 501;
 	public static final int WHiSPER_FAIL = 502;
 	
 	public static final int WELCOME_TEXT = 707;
+	protected static final int BANNED_ID = 444;
+	
 }

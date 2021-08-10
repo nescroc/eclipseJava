@@ -9,7 +9,7 @@ public class LogWriter {
 	public static void logWrite(Packet packet) {
 		Platform.runLater(()->{
 			ServerViewLoader.svc0.txtDisplay.appendText(
-					packet.getCid());
+					packet.toString()+"\n");
 		});
 	}
 }

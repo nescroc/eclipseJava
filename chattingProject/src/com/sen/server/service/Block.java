@@ -13,7 +13,7 @@ public class Block {
 	
 	public void show() throws IOException {		
 		Stage stage = new Stage();
-		stage.setTitle("ip차단");
+		stage.setTitle("블랙리스트");
 		FXMLLoader loader = 
 				new FXMLLoader(getClass().getResource("../../../../com/sen/server/fxml/Block.fxml"));
 		Parent root = (Parent) loader.load();

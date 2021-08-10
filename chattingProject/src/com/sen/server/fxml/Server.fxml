@@ -28,8 +28,7 @@
       <Button fx:id="refreshBt" disable="true" layoutX="525.0" layoutY="38.0" prefHeight="23.0" prefWidth="80.0" text="새로고침" AnchorPane.leftAnchor="525.0" AnchorPane.rightAnchor="12.0" />
       <ToolBar prefHeight="15.0" prefWidth="610.0">
         <items>
-            <Button fx:id="btnBlock" disable="true" prefHeight="23.0" prefWidth="52.0" text="IP차단" />
-          <Button fx:id="logbt" text="로그" />
+            <Button fx:id="btnBlock" disable="true" prefHeight="23.0" prefWidth="52.0" text="차단" />
         </items>
       </ToolBar>
       <Label layoutX="286.0" layoutY="43.0" prefHeight="15.0" prefWidth="55.0" text="채팅방 수" />
