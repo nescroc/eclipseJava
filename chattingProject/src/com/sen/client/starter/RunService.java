@@ -15,16 +15,23 @@ public class RunService extends Application {
 		FXMLLoader loader = 
 				new FXMLLoader(getClass().getResource(
 						"../../../../com/sen/client/fxml/RoomList.fxml"));
-		Parent root;
-		root = loader.load();
-		ViewLoader.roomListController = loader.getController();
-		ViewLoader.roomListController.setStage(stage);
-		Scene scene = new Scene(root);
-		stage.sizeToScene();
-		stage.setScene(scene);
-		stage.setResizable(false);
-		stage.show();
 		
+		Parent root = loader.load();
+		
+		ViewLoader.roomListController = loader.getController();
+		
+		ViewLoader.roomListController.setStage(stage);
+		
+		Scene scene = new Scene(root);
+		
+		stage.sizeToScene();
+		
+		stage.setScene(scene);
+		
+		stage.setResizable(false);
+		
+		stage.show();
+		System.out.println("여기까지");
 	}
 
 	@Override

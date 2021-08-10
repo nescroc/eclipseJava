@@ -10,7 +10,9 @@ public class ConnUtil {
 				return DriverManager.getConnection(					
 						"jdbc:oracle:thin:@localhost:1521/XEPDB1",
 						"mytest","mytest");
-			} catch (Exception e) {}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return null;
 		}
 

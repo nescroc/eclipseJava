@@ -1,13 +1,12 @@
 package com.sen.client.controller;
 
-import java.io.IOException;
 import java.net.URL;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.util.ResourceBundle;
 
 import com.sen.client.util.Config;
 import com.sen.client.util.Inspector;
+import com.sen.server.service.Packet;
+import com.sen.server.service.Protocol;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -37,19 +36,63 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		loginbt.setOnAction(e->{
+		newjoinbt.setOnAction(e -> {
+			joinAction(e);
+		});
+		loginbt.setOnAction(e -> {
 			loginAction(e);
 		});
-		loginArea.setOnAction(e->{
+		loginArea.setOnAction(e -> {
 			loginAction(e);
 		});
-		newjoinbt.setOnAction(e->{
-			Platform.runLater(()->{
-				resultlb.setStyle("-fx-text-fill:red;" 
-						+ "-fx-font-size:11;");
+		pwdArea.setOnAction(e -> {
+			loginAction(e);
+		});
+		newjoinbt.setOnAction(e -> {
+			Platform.runLater(() -> {
+				resultlb.setStyle("-fx-text-fill:red;" + "-fx-font-size:11;");
 				resultlb.setText("아직 구현안함");
 			});
 		});
+	}
+
+	private void joinAction(ActionEvent e) {
+		Runnable rn = new Runnable() {
+			@Override
+			public void run() {
+				String id = loginArea.getText();
+				String pw = pwdArea.getText();
+				if (Inspector.isWhiteSpace(id)) {
+					Platform.runLater(() -> {
+						resultlb.setText("공백 포함 불가");
+						resultlb.setStyle("-fx-text-fill:red;" + "-fx-font-size:13;");
+						loginArea.clear();
+						pwdArea.clear();
+					});
+					return;
+				}
+				if (Inspector.isCharSize(id) || Inspector.isCharSize(pw)) {
+					Platform.runLater(() -> {
+						resultlb.setText("아이디 길이 오류");
+						resultlb.setStyle("-fx-text-fill:red;" + "-fx-font-size:13;");
+						loginArea.clear();
+						pwdArea.clear();
+					});
+					return;
+				}
+				Packet packet = new Packet();
+				packet.setProtocol(Protocol.JOIN_REQUEST);
+				packet.setCid(id);
+				packet.setCpw(pw);			
+				
+				Config.socketService.sender(packet);
+
+				return;
+			}
+
+		};
+		Thread thread = new Thread(rn);
+		thread.start();
 	}
 
 	/** 컨트롤러 초기화 **/
@@ -61,43 +104,43 @@ public class LoginController implements Initializable {
 	public void setLabel(String text) {
 		resultlb.setText(text);
 	}
-	
-	
-	/** 아이디 라벨, 버튼 이벤트 처리**/
+
+	/** 아이디 라벨, 버튼 이벤트 처리 **/
 	public void loginAction(ActionEvent event) {
 		Task<Void> task = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-
-				try {
-
-					String id = loginArea.getText();
-
-					if (Inspector.isWhiteSpace(id)) {
-
-						Platform.runLater(() -> {
-
-							resultlb.setText("공백 포함 불가");
-							resultlb.setStyle("-fx-text-fill:red;" + "-fx-font-size:13;");
-							loginArea.clear();
-							pwdArea.clear();
-						});
-						return null;
-					}
-					Charset charset = Charset.forName("UTF-8");
-					ByteBuffer byteBuffer = charset.encode(id);
-					Config.socketChannel.write(byteBuffer);
-				} catch (IOException ioe) {
-
+				String id = loginArea.getText();
+				String pw = pwdArea.getText();				
+				if (Inspector.isWhiteSpace(id)) {
 					Platform.runLater(() -> {
+						resultlb.setText("공백 포함 불가");
 						resultlb.setStyle("-fx-text-fill:red;" + "-fx-font-size:13;");
-						resultlb.setText("서버 미연결");
+						loginArea.clear();
+						pwdArea.clear();
 					});
+					return null;
 				}
+				if (Inspector.isCharSize(id) || Inspector.isCharSize(pw)) {
+					Platform.runLater(() -> {
+						resultlb.setText("아이디 길이 오류");
+						resultlb.setStyle("-fx-text-fill:red;" + "-fx-font-size:13;");
+						loginArea.clear();
+						pwdArea.clear();
+					});
+					return null;
+				}
+				Packet packet = new Packet();
+				packet.setProtocol(Protocol.LOGIN_REQUEST);
+				packet.setCid(id);
+				packet.setCpw(pw);
+
+				Config.socketService.sender(packet);
 				return null;
 			}
 
 		};
+		System.out.println("task 작업");
 		Thread thread = new Thread(task);
 		thread.start();
 	}

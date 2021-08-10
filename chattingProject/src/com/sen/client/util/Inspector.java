@@ -8,8 +8,10 @@ public class Inspector {
 		return false;
 	}
 	//todo
-	public static boolean isCharSize() {
-		
-		return false;
+	public static boolean isCharSize(String idpw) {
+		if (idpw.length()>3&&idpw.length()<20) {
+			return false;
+		}
+		return true;
 	}
 }
